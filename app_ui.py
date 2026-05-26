@@ -64,8 +64,61 @@ def update_categories(*args):
 
 transaction_type_var.trace("w", update_categories)
 
+def load_transactions():
+    for row in tree.get_children():
+        tree.delete(row)
+    for record in db.get_all_transactions(user_id):
+        tree.insert("", "end", values=record)
+
+def add_transaction():
+    if not transaction_type_var.get() or not category_var.get() or not amount_var.get():
+        messagebox.showerror("Error", "All fields are required.")
+        return
+    if not amount_var.get().isdigit():
+        messagebox.showerror("Error", "Amount must be a number(s).")
+        return
+    db.add_transaction(user_id, transaction_type_var.get(), category_var.get(), amount_var.get())
+    load_transactions()
+
+def delete_transaction():
+    selected = tree.focus()
+    if not selected:
+        messagebox.showerror("Error", "Select a transaction first.")
+        return
+    confirm = messagebox.askyesno("Confirm", "Are you sure you want to delete this transaction?")
+    if confirm:
+        id = tree.item(selected)["values"][0]
+        db.delete_transactions(id)
+        load_transactions()
+
+def update_transaction():
+    selected = tree.focus()
+    if not selected:
+        messagebox.showerror("Error", "Select a transaction first.")
+        return
+    id = tree.item(selected)["values"][0]
+    db.update_transactions(id, user_id, transaction_type_var.get() , category_var.get() , amount_var.get())
+    load_transactions()
+
+def select_transaction(event):
+    selected = tree.focus()
+    if selected:
+        values = tree.item(selected)["values"]
+        transaction_type_var.set(values[1])
+        category_var.set(values[2])
+        amount_var.set(values[3])
+
+def clear_fields():
+    transaction_type_var.set("")
+    category_var.set("")
+    amount_var.set("")
+
+def logout():
+    root.destroy()
+
+
 #buttons
-tk.Button(top_bar, text="Logout", bg="#3C3489", fg="#EEEDFE", relief="flat", borderwidth=0).pack(side='right')
+tk.Button(top_bar, text="Logout", command=logout, bg="#3C3489", fg="#EEEDFE", relief="flat", borderwidth=0).pack(side='right')
 
 root.mainloop()
 
