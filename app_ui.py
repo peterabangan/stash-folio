@@ -46,12 +46,12 @@ tk.Entry(form_frame, textvariable=amount_var, width=15).pack(side='left', padx=5
 tree = ttk.Treeview(table_frame, columns=("ID", "Transaction Type", "Category", "Amount", "Date"), show="headings")
 for col in ("ID", "Transaction Type", "Category", "Amount", "Date"):
     tree.heading(col, text=col)
-tree.pack(fill='both', expand=True)
 #scrollbar for treeview
 scrollbar = ttk.Scrollbar(table_frame, orient="vertical")
 scrollbar.config(command=tree.yview)
 tree.config(yscrollcommand=scrollbar.set)
 scrollbar.pack(side='right', fill='y')
+tree.pack(fill='both', expand=True)
 
 #functions
 
