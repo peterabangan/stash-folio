@@ -127,6 +127,8 @@ tk.Button(button_frame, text="Clear Fields", command=clear_fields, bg="#3C3489",
 
 
 
+tree.bind("<ButtonRelease-1>", select_transaction)
+load_transactions()
 
 root.mainloop()
 
