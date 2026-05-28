@@ -119,6 +119,14 @@ def logout():
 
 #buttons
 tk.Button(top_bar, text="Logout", command=logout, bg="#3C3489", fg="#EEEDFE", relief="flat", borderwidth=0).pack(side='right')
+tk.Button(button_frame, text="Add Transaction", command=add_transaction, bg="#3C3489", fg="#EEEDFE", relief="flat", borderwidth=0).pack(side='left', padx=5)
+tk.Button(button_frame, text="Update Transaction", command=update_transaction, bg="#3C3489", fg="#EEEDFE", relief="flat", borderwidth=0).pack(side='left', padx=5)
+tk.Button(button_frame, text="Delete Transaction", command=delete_transaction, bg="#3C3489", fg="#EEEDFE", relief="flat", borderwidth=0).pack(side='left', padx=5)
+tk.Button(button_frame, text="Clear Fields", command=clear_fields, bg="#3C3489", fg="#EEEDFE", relief="flat", borderwidth=0).pack(side='left', padx=5)
+
+
+
+
 
 root.mainloop()
 
