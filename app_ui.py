@@ -26,7 +26,6 @@ def open_app(user_id):
 
 
     #variables
-    user_id = None
     transaction_type_var = tk.StringVar()
     category_var = tk.StringVar()
     amount_var = tk.StringVar()
