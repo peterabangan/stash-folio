@@ -53,8 +53,9 @@ def open_login():
             messagebox.showerror("Error", "Wrong password.")
             return
         else: 
-            messagebox.showinfo("Success!", f"Welcome, {username_var.get()}!")
-            return
+            root.destroy()
+            from app_ui import open_app
+            open_app(user[0])
     def register():
         if not username_var.get() or not password_var.get():
             messagebox.showerror("Error", "All fields are required.")
