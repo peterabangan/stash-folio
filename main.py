@@ -1,2 +1,4 @@
-#Main entry point for the budget tracker app
-from login_ui import *
+# Main entry point for Stash-Folio APP
+from login_ui import open_login
+
+open_login()
