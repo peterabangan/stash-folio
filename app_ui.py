@@ -118,7 +118,7 @@ def open_app(user_id):
     def logout():
         root.destroy()
         from login_ui import open_login
-        open_login
+        open_login()
 
 
     #buttons
